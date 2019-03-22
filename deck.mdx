@@ -46,6 +46,24 @@ objInstance.info;   // undefined;
 ```
 ---
 ```
+const objInstance = {};
+Object.defineProperty(
+    objInstance,
+    'firstDefinedProperty',
+    {value: 42, writable: false }
+);
+
+Object.defineProperties(objInstance, {
+  secondDefinedProperty: {
+    value: 42,
+    writable: true,
+  },
+  thirdDefinedProperty: {},
+});
+
+```
+---
+```
 const objInstance = {
   doSmth() {},
   doSmthElse() {},
@@ -178,6 +196,27 @@ initial['pink floyd'] = 'we don\'t need no education';
 spreadCopy['pink floyd'];   // undefined
 assignCopy['pink floyd'];   // undefined
 iteratedCopy['pink floyd']; // undefined
+
+```
+## object's data
+
+```
+let rock = {
+  scorpions: 'here i am, rock you like a hurricane',
+  queen: 'empty spaces, what are we living for?'
+};
+
+rock['pink floyd'] = 'we don\'t need no education';
+
+Object.keys(rock); // ['scorpions', 'queen', 'pink floyd']
+Object.getOwnPropertyNames(rock); // ['scorpions', 'queen', 'pink floyd']
+Object.values(rock); // ['here i am, rock you like a hurricane', 'empty spaces, what are we living for?', 'we don\'t need no education']
+Object.entries(rock);
+// [
+    ['scorpions', 'here i am, rock you like a hurricane'],
+    ['queen', 'empty spaces, what are we living for?'],
+    ['pink floyd', 'we don\'t need no education'],
+   ]
 
 ```
 ## Questions
