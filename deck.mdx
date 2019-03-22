@@ -1,0 +1,187 @@
+import { Head, Code, Appear, components as Components } from 'mdx-deck'
+import { FullscreenCode, Split, SplitRight } from 'mdx-deck/layouts'
+import ImageWithLabel from './components/image-with-label'
+
+export { default as theme } from './theme'
+
+<Head>
+  <title>JavaScript dla dzidziusów</title>
+</Head>
+
+# JavaScript dla dzidziusów vol.3
+
+
+<ImageWithLabel>
+  <img height="400" src="./static/at-finish.jpg"/>
+</ImageWithLabel>
+Author: Artem Ovcharenko
+
+---
+## Object
+
+```
+const createdWithLiteral = {};
+const createdWithConstructor = new Object();
+const createdWithMethod = Object.create(someObj);
+
+{awesomeKey: 'awesome!'} !== {awesomeKey: 'awesome!'}; // true
+```
+---
+```
+const objInstance = {};
+
+objInstance.addInfo = function (info) {
+  this.info = info;
+};
+
+objInstance.removeInfo = function (info) {
+  delete this.info;
+};
+
+objInstance.info;   // undefined;
+objInstance.addInfo('Mięsny Jeż');
+objInstance.info;  // 'Mięsny Jeż'
+objInstance.removeInfo();
+objInstance.info;   // undefined;
+```
+---
+```
+const objInstance = {
+  doSmth() {},
+  doSmthElse() {},
+};
+
+objInstance.doSmth;    // function
+
+objInstance.toString;  // function
+objInstance.hasOwnProperty('toString'); // false
+```
+---
+```
+const getValue = (arg) => arg;
+
+const objInstance = {
+  value: getValue(),
+};
+
+objInstance.value === undefined; // true
+
+value in objInstance; // true
+```
+---
+```
+const archenemy = {
+  'the Dark Lord': 'He-Who-Must-Not-Be-Named',
+};
+
+// wrong way
+archenemy.the Dark Lord;   // Unexpected identifier
+
+// right way
+archenemy['the Dark Lord'] // 'He-Who-Must-Not-Be-Named'
+
+const getName = (archenemy) => {
+    const possibleNames = ['Tom Marvolo Riddle', 'The Heir of Slytherin', 'the Dark Lord'];
+
+    return archenemy[possibleNames.find((name) => archenemy[name])];
+};
+
+getName(archenemy); // 'He-Who-Must-Not-Be-Named'
+```
+---
+```
+const breakingRules = {
+  class: 'Yep i am class',
+  return: 'want to return smth, boy?',
+  void: 0,
+};
+```
+---
+## Iterating
+```
+const first = {
+  firstKey1: 'firstValue1',
+  firstKey2: 'firstValue2',
+  firstKey3: 'firstValue3',
+};
+
+for (key in first) {
+  console.log(key);
+}
+// firstKey1, firstKey2, firstKey3
+```
+---
+
+## Iterating
+```
+const second = Object.create(first);
+
+second.second1 = 'secondValue1';
+
+for (key in second) {
+  console.log(key);
+}
+// second1, firstKey1, firstKey2, firstKey3
+
+for (key in second) {
+  if (second.hasOwnProperty(key)) {
+    console.log(key);
+  }
+}
+// second1
+```
+---
+## Copying by value
+
+```
+let initial = 4;
+let copied = initial;
+
+initial = 5;
+
+initial === 5; // true
+copied === 4; // true
+```
+---
+## Copying by reference
+
+```
+let initial = {};
+let copied = initial;
+
+initial.scorpions = 'here i am, rock you like a hurricane';
+copied.queen = 'empty spaces, what are we living for?';
+
+initial.queen === 'empty spaces, what are we living for?'  // true
+copied.scorpions === 'here i am, rock you like a hurricane'; // true
+```
+---
+## object copying
+
+```
+let initial = {
+  scorpions: 'here i am, rock you like a hurricane',
+  queen: 'empty spaces, what are we living for?'
+};
+
+let spreadCopy = { ...initial };
+let assignCopy = Object.assign({}, initial);
+
+let iteratedCopy = {};
+for (key in initial) {
+  if (initial.hasOwnProperty(key)) {
+    iteratedCopy[key] = initial[key];
+  }
+}
+
+initial['pink floyd'] = 'we don\'t need no education';
+spreadCopy['pink floyd'];   // undefined
+assignCopy['pink floyd'];   // undefined
+iteratedCopy['pink floyd']; // undefined
+
+```
+## Questions
+
+---
+
+### Thank you for your participation.
