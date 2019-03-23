@@ -192,7 +192,7 @@ for (key in initial) {
   }
 }
 
-initial['pink floyd'] = 'we don\'t need no education';
+initial['pink floyd'] = "we don't need no education";
 spreadCopy['pink floyd'];   // undefined
 assignCopy['pink floyd'];   // undefined
 iteratedCopy['pink floyd']; // undefined
@@ -207,27 +207,27 @@ const rock = {
   queen: 'empty spaces, what are we living for?'
 };
 
-rock['pink floyd'] = 'we don\'t need no education';
+rock['pink floyd'] = "we don't need no education";
 
 Object.keys(rock); // ['scorpions', 'queen', 'pink floyd']
 Object.getOwnPropertyNames(rock); // ['scorpions', 'queen', 'pink floyd']
-Object.values(rock); // ['here i am, rock you like a hurricane', 'empty spaces, what are we living for?', 'we don\'t need no education']
+Object.values(rock); // ['here i am, rock you like a hurricane', 'empty spaces, what are we living for?', "we don't need no education"]
 Object.entries(rock);
 // [
     ['scorpions', 'here i am, rock you like a hurricane'],
     ['queen', 'empty spaces, what are we living for?'],
-    ['pink floyd', 'we don\'t need no education'],
+    ['pink floyd', "we don't need no education"],
    ]
 
 ```
 ---
-## prevent muting
+## prevent mutating
 
 ```
 const rock = {
   scorpions: 'here i am, rock you like a hurricane',
   queen: 'empty spaces, what are we living for?',
-  'pink floyd': 'we don\'t need no education'
+  'pink floyd': "we don't need no education"
 };
 
 Object.freeze(rock);
@@ -248,7 +248,7 @@ Object.isFrozen(rock); // true
 const rock = {
   scorpions: 'here i am, rock you like a hurricane',
   queen: 'empty spaces, what are we living for?',
-  'pink floyd': 'we don\'t need no education'
+  'pink floyd': "we don't need no education"
 };
 
 Object.preventExtensions(rock);
@@ -269,7 +269,7 @@ Object.isExtensible(rock); // false
 const rock = {
   scorpions: 'here i am, rock you like a hurricane',
   queen: 'empty spaces, what are we living for?',
-  'pink floyd': 'we don\'t need no education'
+  'pink floyd': "we don't need no education"
 };
 
 Object.seal(rock);
