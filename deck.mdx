@@ -198,10 +198,11 @@ assignCopy['pink floyd'];   // undefined
 iteratedCopy['pink floyd']; // undefined
 
 ```
+---
 ## object's data
 
 ```
-let rock = {
+const rock = {
   scorpions: 'here i am, rock you like a hurricane',
   queen: 'empty spaces, what are we living for?'
 };
@@ -219,6 +220,73 @@ Object.entries(rock);
    ]
 
 ```
+---
+## prevent muting
+
+```
+const rock = {
+  scorpions: 'here i am, rock you like a hurricane',
+  queen: 'empty spaces, what are we living for?',
+  'pink floyd': 'we don\'t need no education'
+};
+
+Object.freeze(rock);
+
+rock['justin bieber'] = 'Where are you now that I need ya?';
+rock['justin bieber'] === undefined // true;
+
+delete rock.queen;
+rock.queen === 'empty spaces, what are we living for?'; //true
+
+Object.isFrozen(rock); // true
+
+```
+---
+## prevent extendable
+
+```
+const rock = {
+  scorpions: 'here i am, rock you like a hurricane',
+  queen: 'empty spaces, what are we living for?',
+  'pink floyd': 'we don\'t need no education'
+};
+
+Object.preventExtensions(rock);
+
+rock['justin bieber'] = 'Where are you now that I need ya?';
+rock['justin bieber'] === undefined // true;
+
+delete rock.queen;
+rock.queen === undefined; //true
+
+Object.isExtensible(rock); // false
+
+```
+---
+## prevent deleting and adding
+
+```
+const rock = {
+  scorpions: 'here i am, rock you like a hurricane',
+  queen: 'empty spaces, what are we living for?',
+  'pink floyd': 'we don\'t need no education'
+};
+
+Object.seal(rock);
+
+rock['justin bieber'] = 'Where are you now that I need ya?';
+rock['justin bieber'] === undefined // true;
+
+delete rock.queen;
+rock.queen === 'empty spaces, what are we living for?'; //true
+
+rock.queen = 'Buddy, you\'re a boy, make a big noise';
+rock.queen === 'Buddy, you\'re a boy, make a big noise'; //true
+
+Object.isSealed(rock); // true
+
+```
+---
 ## Questions
 
 ---
